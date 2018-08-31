@@ -26,7 +26,11 @@ app.get('/users/:id',(req,res)=>{
       res.sendStatus(500)
       return;
     }
-    res.json(rows);
+
+    const users = rows.map((row) => {
+      return{firstName: row.first_name, lastName: row.last_name};
+    })
+    res.json(users);
     // console.log("I think we successfully fetched")
    
   });
